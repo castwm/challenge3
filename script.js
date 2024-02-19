@@ -1,19 +1,34 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+//Add Event Listener
+document.addEventListener("DOMContentLoaded", function() {
+  var generateBtn = document.querySelector("#generate");
 
-//generate password
-var passLength = 8;
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var nums = "0123456789"
-var specialChars = "!@#$%^&*()_+-=[]{}|;':,.<>/?";
-var choices = lowerCase + upperCase + nums + specialChars;
-//console.log(choices);
-var password = "";
-for (var i=0; i<passLength; i++){
-  var rand = Math.floor(Math.random() * choices.length);
-  password = password + choices[rand];
-}
+
+
+  function generatePassword() {
+      var passLength = prompt("Choose password length between 8 and 128");
+      
+      //password length check 
+      if (passLength > 128 || passLength < 8 ){
+          alert("Password length must be a between 8 and 128 characters.");
+          var passLength = prompt("Choose password length between 8 and 128");
+      }
+
+  
+
+      var lowercase = "abcdefghijklmnopqrstuvwxyz";
+      var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var numbers = "0123456789";
+      var specialChars = "!@#$%^&*()_+-=[]{}|;':,.<>/?";
+      var choices = "";
+      choices = lowercase + uppercase + numbers + specialChars
+      var password = "";
+
+      for (var i = 0; i < passLength; i++) {
+          var rand = Math.floor(Math.random() * choices.length);
+          password = password + choices[rand];
+      }
+      return password;
+  }
 //console.log(password);
 
 
